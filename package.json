@@ -1,0 +1,24 @@
+{
+  "name": "archy",
+  "version": "1.0.0",
+  "description": "your-ai-note-taking-assistant",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Archy Will He 何魏奇",
+  "license": "ISC",
+  "dependencies": {
+    "@types/cheerio": "^0.22.18",
+    "@types/request": "^2.48.5",
+    "dotenv": "^8.2.0",
+    "qrcode-terminal": "^0.12.0",
+    "underscore": "^1.10.2",
+    "wechaty": "^0.40.8",
+    "wechaty-puppet": "^0.25.2",
+    "wechaty-puppet-padplus": "^0.7.18"
+  },
+  "devDependencies": {
+    "typescript": "^3.9.5"
+  }
+}
