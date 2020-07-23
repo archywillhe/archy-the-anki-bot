@@ -93,6 +93,9 @@ const cedict = async (word:string): Promise<WordInfo> => {
 
 const makeAnki = makePromiseSpawn((fileName) => `python3 src/make-anki.py ${fileName}`)
 
+const multiply =(a:Array<number>)=> _.reduce(a, function(a, b){ return a * b}, 1);
+
+
 const getWordDifficulty = (word)=>{
   var scores = _.map(word,(char)=>{
     console.log(char,wordMetadata.data[0][0])
@@ -101,10 +104,13 @@ const getWordDifficulty = (word)=>{
       console.log("not found: "+char)
       return -10
     }
-    return -(r[2] * 420  ) + r[1] //420 :)
+    const frequencyScore = r[1]
+    const isCommonWord = false
+    const stroke = r[2]
+    return (Math.sqrt(0.09 + stroke * (isCommonWord ? 0.024 : 0.042)  ) + (isCommonWord ? 0.3  : 0.42 ) + frequencyScore ) * frequencyScore * (isCommonWord ? 5 : 8)
   })
 
-  return sum(scores)
+  return multiply(scores)
 }
 
 // const getWordInfo = (word)=>{
