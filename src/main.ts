@@ -78,6 +78,8 @@ const makePromiseSpawn = (params2Cmd) => {
   }
 }
 
+const mkDir =  makePromiseSpawn((path)=>`mkdir -p ${path}`)
+
 const sum =(a)=> _.reduce(a, function(a, b){ return a + b}, 0);
 
 const fenci = makePromiseSpawn((fileName) => `python3 src/fenci.py ${fileName}`)
@@ -205,6 +207,7 @@ if (t == bot.Message.Type.Url) {
               (a.meaning || "unknown")
           )
         }))
+        await mkdir('userDataFiles')
           fs.writeFileSync('userDataFiles/test-cards.json', JSON.stringify(wordInfos))
           await msg.say("要生成Anki记忆卡片请输入「anki」～ ")
         }catch(error){
